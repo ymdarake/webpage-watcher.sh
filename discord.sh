@@ -1,0 +1,13 @@
+#!/bin/bash
+
+send_discord_notification() {
+  local message=$1
+  # Construct payload
+  local payload=$(cat <<EOF
+{
+  "content": "$message"
+}
+EOF
+)
+  curl -H "Content-Type: application/json" -X POST -d "$payload" $discord_url
+}
