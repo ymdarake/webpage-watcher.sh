@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eu
+
 source .env
 
 if [ -z "$discord_url" ]; then
