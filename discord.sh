@@ -1,7 +1,8 @@
 #!/bin/bash
 
 send_discord_notification() {
-  local message=$1
+  local webhook_url=$1
+  local message=$2
   # Construct payload
   local payload=$(cat <<EOF
 {
@@ -9,5 +10,5 @@ send_discord_notification() {
 }
 EOF
 )
-  curl -H "Content-Type: application/json" -X POST -d "$payload" $discord_url
+  curl -H "Content-Type: application/json" -X POST -d "$payload" "$webhook_url"
 }
